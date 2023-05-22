@@ -9,8 +9,8 @@ I. How to run the website in your localhost
 
 II. Links
 
-- GitHub Repository:
-- Demo video: 
+- GitHub Repository: https://github.com/VinhNghi123/random-group-7-website.git
+- Demo video: https://youtu.be/QyXYieni53c
 
 - Accounts:
 a. Customer:
