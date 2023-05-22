@@ -1,0 +1,59 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+
+<div class="container-fluid h-custom">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-9 col-lg-6 col-xl-5">
+      <img src="https://oroinc.com/oromarketplace/wp-content/uploads/sites/23/2021/04/1122-300x224@2x.png"
+        class="img-fluid" alt="e-commerce">
+    </div>
+
+    <!-- Login Box -->
+    <form class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" action="/login" method="post">
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="username">Username:</label>
+        <input type="text" id="username" name="username" class="form-control form-control-lg"
+          placeholder="Enter a valid username"/>
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-3">
+        <label class="form-label" for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control form-control-lg"
+          placeholder="Enter password" />
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" value="" id="rememberMe" name="rememberMe">
+        <label class="form-check-label" for="rememberMe">
+          Remember me
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg">Login</button>
+      <a href="/register" class="link-danger">Don't have an account? Sign up here</a>
+
+      <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start mt-4">
+        <p class="lead fw-normal mb-0 me-3">Sign in with</p>
+        <button type="button" class="btn btn-primary btn-floating mx-1">
+          <i class="fab fa-facebook-f"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-floating mx-1">
+          <i class="fab fa-twitter"></i>
+        </button>
+
+        <button type="button" class="btn btn-primary btn-floating mx-1">
+          <i class="fab fa-linkedin-in"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

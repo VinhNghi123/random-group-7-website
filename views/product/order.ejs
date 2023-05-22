@@ -1,0 +1,52 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!-- ORDER DETAILS -->
+<% if (order) { %> 
+    <section class="order-details">
+        <h2>Order Details</h2>
+        
+        <!-- Products -->
+        <ul>
+          <% order.products.forEach(function(product) { %>
+            <li>
+              <h3><%= product.product.name %></h3>
+              <p>Price: <%= product.itemPrice %></p>
+              <p>Quantity: <%= product.quantity %></p>
+            </li>
+          <% }); %>
+        </ul>
+        
+        <!-- Total Price -->
+        <p>Total Price: <%= order.totalPrice %></p>
+        
+        <!-- Customer Address -->
+        <p>Customer Address: <%= order.customerAddress %></p>
+        
+        <!-- Shipper ID -->
+        <p>Shipper ID: <%= order.shipperID %></p>
+        
+        <!-- Created At -->
+        <p>Created At: <%= order.createdAt %></p>
+    
+        <!-- Status -->
+        <p>Status: <%= order.status %></p>
+        <form action="/order/remove" method="post">
+            <input type="hidden" name="orderId" value="<%= order._id %>">
+            <select id="status" name="status">
+                <option value="active" <% if (order.status === 'active') { %>selected<% } %>>Active</option>
+                <option value="delivered" <% if (order.status === 'delivered') { %>selected<% } %>>Delivered</option>
+                <option value="cancelled" <% if (order.status === 'cancelled') { %>selected<% } %>>Cancelled</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+      <% } else { %>
+        <p>Nothing</p>  
+      <% } %>
+      

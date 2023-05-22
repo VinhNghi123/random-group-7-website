@@ -1,0 +1,63 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!-- BANNER -->
+<div class="banner">
+    <img src="https://thumbs.dreamstime.com/b/flat-line-design-website-banner-e-commerce-modern-vector-illustration-web-marketing-print-material-68581557.jpg" alt="Banner Image">
+  </div>
+
+<!-- SHOW ALL PRODUCTS  -->
+    <section class="products">
+      <h2>All Products</h2>
+<!-- FILTER -->
+      <div class="filter">
+        <form action="/filter" method="get">
+          <div class="price-filter">
+            <div class="price-title">Price Range</div>
+            <div class="min-price-display">
+              <input type="range" name="minPrice" class="min-price" id="min-price" min="0" max="100000" step="1000">
+              <output for="min-price" id="min-price-output">Min</output>
+            </div>
+            <div class="separator"></div>
+            <div class="max-price-display">
+              <input type="range" name="maxPrice" class="max-price" id="max-price" min="0" max="1000000" step="10">
+              <output for="max-price" id="max-price-output">Max</output>
+            </div>
+            <button type="submit">Apply</button>
+          </div>
+        </form>
+      </div>   
+      <div class="container">
+        <div class="product-list">
+          <% products.forEach(function(product) { %>
+            <div class="product">
+              <a href="/productDetail?id=<%= product._id %>" class="product-info">
+                <div>
+                  <img src="<%= product.image %>" alt="Product image">
+                  <h3><%= product.name %></h3>
+                  <p class="price">$<%= product.price %></p>
+                  <p class="description"><%= product.description %></p>
+                  <p class="vendorName">Retailer: <%= product.vendorName %></p>
+                </div>
+              </a>
+              <a href="/productDetail?id=<%= product._id %>" class="view-product">View Product</a>
+              <form action="/cart/add" method="post">
+                <input type="hidden" name="productId" value="<%= product._id %>">
+                <br>
+                <label for="quantity">Quantity: </label>
+                <input type="number" name="quantity" id="quantity">
+                <br><br>
+                <button type="submit">Add to cart</button>
+              </form>
+            </div>
+          <% }); %>
+        </div>
+      </div>
+    </section>
+
+<%- include('../partials/pagination') %>

@@ -1,0 +1,33 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!-- ACCOUNT DETAILS  -->
+
+<div class="user-container">
+    <form action="/changeProfilePicture" method="post">
+      <img src="<%= user.profilePicture %>" alt="Profile Picture">
+      <label for="ProfilePicture">New profile picture link: </label>
+      <input type="text" name="ProfilePicture" id="ProfilePicture" placeholder="uploads/<image>..">
+    </form>
+  
+    <h2>Welcome, <%= user.username %></h2>
+    <p>Role: <%= user.role %></p>
+  
+    <% if (user.role === 'customer') { %>
+      <p>Name: <%= user.name %></p>
+      <p>Address: <%= user.address %></p>
+    <% } else if (user.role === 'vendor') { %>
+      <p>Business Name: <%= user.businessName %></p>
+      <p>Business Address: <%= user.businessAddress %></p>
+      <a href="/home">View my products</a>
+    <% } else if (user.role === 'shipper') { %>
+      <p>Distribution hub: <%= user.hubNameAndAddress %></p>
+    <% } %>
+  </div>
+
+

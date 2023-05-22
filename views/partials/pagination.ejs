@@ -1,0 +1,24 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<% if (totalPages > 1) { %>
+    <div class="pagination">
+      <% if (currentPage > 1) { %>
+        <a href="/homepage/<%= user ? user.role : 'customer' %>s?page=<%= currentPage - 1 %>" class="pagination-button">◀️ Previous</a>
+      <% } %>
+  
+      <% for (let i = 1; i <= totalPages; i++) { %>
+        <a href="/homepage/<%= user ? user.role : 'customer' %>?page=<%= i %>" class="pagination-button<%= currentPage === i ? ' active' : '' %>"><%= i %></a>
+      <% } %>
+  
+      <% if (currentPage < totalPages) { %>
+        <a href="/homepage/<%= user ? user.role : 'customer' %>?page=<%= currentPage + 1 %>" class="pagination-button">Next ▶️</a>
+      <% } %>
+    </div>
+  <% } %>
+  

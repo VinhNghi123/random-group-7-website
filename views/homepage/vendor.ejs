@@ -1,0 +1,93 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!-- <section>
+    <img src="<%= user.profilePicture %>" alt="Profile Picture">
+    <p><%= user.businessName %></p>
+    <form action="/add-product" method="post" enctype="multipart/form-data">
+        <label for="productName">Product Name:</label>
+        <input type="text" name="productName" id="productName">
+      
+        <label for="productPrice">Price: </label>
+        <input type="number" name="productPrice" id="productPrice">
+      
+        <label for="productImage">Product image: </label>
+        <input type="file" name="productImage" id="productImage">
+      
+        <label for="productDescription">Description: </label>
+        <textarea name="productDescription" id="productDescription" cols="30" rows="10" maxlength="500" placeholder="Product description..."></textarea>
+       
+        <button type="submit">Add a Product</button>
+    </form>
+</section> -->
+
+<!-- Add Product Form -->
+<section class="vendor_form">
+  <img src="<%= user.profilePicture %>" alt="Profile Picture">
+  <p><%= user.businessName %></p>
+  <!-- <button class="open-button" onclick="toggleForm()">Open Form</button> -->
+  <form action="/add-product" id="productForm" method="post" style="display: block;" >
+      <label for="productName">Product Name:</label>
+      <input type="text" name="productName" id="productName">
+    
+      <label for="productPrice">Price: </label>
+      <input type="number" name="productPrice" id="productPrice">
+
+      <label for="productImage">Image: </label>
+      <input type="text" name="productImage" id="productImage">
+
+      <label for="productQuantity">Quantity: </label>
+      <input type="number" name="productQuantity" id="productQuantity">
+
+      <label for="productDescription">Description: </label>
+      <textarea name="productDescription" id="productDescription" cols="30" rows="10" maxlength="500" placeholder="Product description..."></textarea>
+     
+      <button type="submit">Add a Product</button>
+  </form>
+</section>
+<!-- FILTER -->
+<div class="filter">
+  <form action="/filter" method="get">
+    <div class="price-filter">
+      <div class="price-title">Price Range</div>
+      <div class="min-price-display">
+        <input type="range" name="minPrice" class="min-price" id="min-price" min="0" max="100000" step="1000">
+        <output for="min-price" id="min-price-output">Min</output>
+      </div>
+      <div class="separator"></div>
+      <div class="max-price-display">
+        <input type="range" name="maxPrice" class="max-price" id="max-price" min="0" max="1000000" step="10">
+        <output for="max-price" id="max-price-output">Max</output>
+      </div>
+      <button type="submit">Apply</button>
+    </div>
+  </form>
+</div>   
+<!-- SHOW ALL PRODUCTS -->
+<% if (products.length > 0) { %>
+<section class="products">
+  <div class="container">
+    <div class="product-list">
+      <% products.forEach(function(product) { %>
+        <div class="product">
+          <img src="<%= product.image %>" alt="Product image">
+          <h3><%= product.name %></h3>
+          <p class="price">$<%= product.price %></p>
+          <p><%= product.quantity %></p>
+          <p class="description"><%= product.description %></p>
+          <p class="vendorName"><%= product.vendorName %></p>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+<% } else { %>
+  <p>No products being sold</p>
+<% }; %>
+
+<%- include('../partials/pagination') %>

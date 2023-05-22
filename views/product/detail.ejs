@@ -1,0 +1,60 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!--
+<p><%= product.name %></p>
+<p><%= product.price %></p>
+<p><%= product.image %></p>
+<p><%= product.quantity %></p>
+<p><%= product.vendorName %></p>
+<p><%= product.Description %></p>
+
+<a href="/cart">Open cart</a>
+<a href="/cart/add">Add to cart</a>
+-->
+
+<div class = "main-wrapper">
+    <div class = "container">
+        <div class = "product-div">
+            <div class = "product-div-left">
+                <div class = "img-container">
+                    <img src = <%= product.image %> alt = "product">
+                </div>
+                <div class = "hover-container">
+                    <div><img src = <%= product.image %>></div>
+                    <div><img src = <%= product.image %>></div>
+                    <div><img src = <%= product.image %>></div>
+                </div>
+            </div>
+            <div class = "product-div-right">
+                <span class = "product-name"><%= product.vendorName %></span>
+                <span class = "product-price"><%= product.price %></span>
+                <div class = "product-rating">
+                    <span>Vendor: </span>
+                    <span><%= product.vendorName %></span>
+                    <span>Quantity:</span>
+                    <span><%= product.quantity%></span>
+                </div>
+                <p class = "product-description"><%= product.Description %></p>
+                <div class = "btn-groups">
+                    <!-- <a href="/add-to-cart"><button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>Add to cart</button></a> -->
+                    <form action="/cart/add" method="post">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <br>
+                        <label for="quantity">Quantity: </label>
+                        <input type="number" name="quantity" id="quantity">
+                        <br><br>
+                        <button type="submit">Add to cart</button>
+                      </form>
+                    
+                    <button type = "button" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

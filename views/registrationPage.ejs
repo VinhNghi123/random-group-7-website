@@ -1,0 +1,55 @@
+ <!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+ 
+ <!-- Registration Section -->
+ <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Registration</h1>
+        <form action="/create-an-account" method="post">
+          <input type="hidden" name="role" value="<%= role %>">
+
+          <label for="username">Username: </label>
+          <input type="text" id="username" name="username" required><br><br>
+          <label for="password">Password: </label>
+          <input type="password" id="password" name="password" required><br><br>
+          
+          <label for="profilePicture">Profile Picture URL:</label>
+          <input type="text" name="profilePicture" id="profilePicture">
+          <!-- CUSTOMER -->
+          <% if (role === 'customer') { %>
+            <label for="customer-name">Name: </label>
+            <input type="text" id="customer-name" name="customer-name" required><br><br>
+            <label for="customer-address">Address: </label>
+            <input type="text" id="customer-address" name="customer-address" required><br><br>
+          <!-- VENDOR -->
+          <% } else if (role === 'vendor') { %>
+            <label for="business-name">Business Name: </label>
+            <input type="text" id="business-name" name="business-name" required><br><br>
+            <label for="business-address">Business Address: </label>
+            <input type="text" id="business-address" name="business-address" required><br><br>
+          <!-- SHIPPER -->
+          <% } else if (role === 'shipper') { %>
+            <label for="distribution-hub">Choose a distribution hub: </label>
+            <select name="distribution-hub" id="distribution-hub" required>
+                <option value="">Choose an option</option>
+                <option value="hub1/A1">hub1/A1</option>
+                <option value="hub2/A2">hub2/A2</option>
+                <option value="hub3/A3">hub3/A3</option>
+            </select>
+          <% } %>
+          <br>
+      
+          <button type="submit" class="button-style">Create Account</button>
+          <button type="reset" class="button-style">Reset</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+

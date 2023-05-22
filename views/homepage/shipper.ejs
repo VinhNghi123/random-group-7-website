@@ -1,0 +1,46 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<!-- FILTER  -->
+<div class="filter">
+  <form action="/filter" method="get">
+    <div class="price-filter">
+      <div class="price-title">Price Range</div>
+      <div class="min-price-display">
+        <input type="range" name="minPrice" class="min-price" id="min-price" min="0" max="100000" step="1000">
+        <output for="min-price" id="min-price-output">Min</output>
+      </div>
+      <div class="separator"></div>
+      <div class="max-price-display">
+        <input type="range" name="maxPrice" class="max-price" id="max-price" min="0" max="1000000" step="10">
+        <output for="max-price" id="max-price-output">Max</output>
+      </div>
+      <button type="submit">Apply</button>
+    </div>
+  </form>
+</div>   
+<% if (orders) { %>
+  <ul class="order-list">
+    <% orders.forEach((order) => { %>
+      <li class="order-item">
+        <div class="order-box">
+          <span class="order-info"><%= order.totalPrice %></span>
+          <span class="order-info"><%= order.customerAddress %></span>
+          <span class="order-info"><%= order.status %></span>
+          <form action="/order/detail" method="get">
+            <input type="hidden" name="order" value="<%= order._id %>">
+            <button type="submit">Details</button>
+          </form>
+        </div>
+      </li>
+    <% }); %>
+  </ul>
+
+<% } else { %>
+  <h3>No Orders</h3>
+<% } %>

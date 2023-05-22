@@ -1,0 +1,64 @@
+<!-- RMIT University Vietnam
+Course: COSC2430 Web Programming
+Semester: 2023A
+Assessment: Assignment 2
+Author: Random Group 7 (floorIsLava)
+IDs: s3979298,s3924310,s3978216,s3981278,s3979290
+Acknowledgement: Acknowledge the resources that you use here. -->
+
+<div class="cart-container">
+  <h1>Cart</h1>
+  <% if (cart.products.length > 0) { %>
+    <div class="table-responsive-md"> 
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% cart.products.forEach((item) => { %>
+            <tr>
+              <td><%= item.product.name %></td>
+              <td><%= item.product.price %></td>
+              <td><%= item.quantity %></td>
+              <td><%= item.itemPrice %></td>
+              <td>
+                <form action="/cart/remove" method="post">
+                  <input type="hidden" name="productId" value="<%= item.product._id %>">
+                  <input type="hidden" name="itemPrice" value="<%= item.itemPrice %>">
+                  <input type="hidden" name="quantity" value="<%= item.quantity %>">
+                  <button type="submit" class="remove-button">Remove</button>
+                </form>            
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total:</td>
+            <td><%= cart.totalPrice %></td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    
+    <form action="/checkout" method="post">
+      <input type="hidden" name="address" value="<%= user.address %>">
+      <span>Choose a distribution hub: </span>
+      <select name="hub" class="select">
+        <option value="hub1/A1">Hub A1</option>
+        <option value="hub2/A2">Hub A2</option>
+        <option value="hub3/A3">Hub A3</option>   
+      </select> 
+      <p><button type="submit" class="checkout-button">Checkout</button></p>
+    </form>
+  <% } else { %>
+    <p>Your cart is empty.</p>
+  <% } %>
+</div> 
